@@ -40,7 +40,12 @@ L6Desk was called L6max Remote up to version 0.12.
 
 ## Questions and problems
 
-Please use [Issues](https://github.com/l6desk/l6desk/issues).
+Please use [Issues](https://github.com/l6desk/l6desk/issues). From version 0.14, the app's
+**REPORT** button makes a problem report for you: a zip file with a screenshot and the details we
+need, and a link that opens a new issue already filled in. Drag the zip onto the issue.
+
+Reports are only opened after a check: they must hold exactly the files the app makes, and be
+signed by the copy of the app that made them. Please attach only zips made by the app.
 
 ## Open source, licence and donations
 
