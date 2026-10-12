@@ -3,6 +3,8 @@
 A remote control for the **Zoom LiveTrak L6max** mixer. Mix from a tablet on a stand, or from a
 computer, with the mixer tucked away at the side of the stage.
 
+![The L6Desk desk: eight channel strips with EQ, pan, mute, solo and faders, and the master section with INSTANT MUTE and the sound pads](l6desk-desk.png)
+
 **[Download the latest release](https://github.com/l6desk/l6desk/releases/latest)**. Each release
 has a README, installation instructions (INSTALL.md) and a user guide (USER-GUIDE.md) alongside the
 files:
