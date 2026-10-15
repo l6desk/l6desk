@@ -14,6 +14,7 @@ files:
 | `l6desk_<version>-1_amd64.deb` | The desktop app for Ubuntu (64-bit PC) |
 | `l6desk-<version>.apk` | The Android app (tablets, Android 7.0 or newer) |
 | `l6desk-bridge-<version>-pi.tar.gz` | The Wi-Fi bridge for a Raspberry Pi Zero 2 W |
+| `L6Desk-<version>.msi`, `…-windows-portable.zip` | The desktop app for Windows 10/11 (preview) |
 
 L6Desk was called L6max Remote up to version 0.12.
 
@@ -38,7 +39,10 @@ L6Desk was called L6max Remote up to version 0.12.
   real mixer.
 - The desktop app (Ubuntu) and the Pi bridge have been used with a real L6max, over USB and
   over Wi-Fi.
-- Bluetooth MIDI isn't available yet. A Windows version is planned.
+- **Windows (preview, from 0.16):** `L6Desk-<version>.msi` or a portable zip. Mixing over USB and
+  the Pi bridge work (tested on Windows 11); the music player works through the Pi, not yet with
+  the L6max on the computer's USB. See the release notes for the driver and cable.
+- Bluetooth MIDI isn't available yet.
 
 ## Questions and problems
 
