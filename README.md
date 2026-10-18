@@ -26,19 +26,20 @@ L6Desk was called L6max Remote up to version 0.12.
   emergencies, and the four **sound pads**.
 - **SENDS view:** AUX 1, AUX 2, SUB MIX and EFX sends on the faders, the effect type,
   the compressor, and four **scenes** you can store and recall.
-- **Music player** (with the Pi bridge): backing tracks, walk-on and interval music played from
-  the Pi into CH7 or CH8, in playlists you upload from the app.
-- **Two ways to reach the mixer:** a USB cable from a computer, or Wi-Fi through a small
-  Raspberry Pi plugged into the mixer. The Pi can run its own Wi-Fi network, so no venue Wi-Fi is
-  needed.
+- **Music player:** backing tracks, walk-on and interval music played into CH7 or CH8, in
+  playlists you upload from the app: from the Pi bridge, or from the computer or tablet the L6max
+  is plugged into.
+- **The mixer's memory card:** set the sound pads' sounds, and download the L6max's recordings
+  (the master, the tracks with sound, or everything; 24-bit or 32-bit float; normalised if you
+  like), from a computer or through the Pi.
+- **Two ways to reach the mixer:** a USB cable (from a computer, or a tablet with USB-C), or Wi-Fi
+  through a small Raspberry Pi plugged into the mixer. The Pi can run its own Wi-Fi network, so no
+  venue Wi-Fi is needed.
 
 ## Status
 
-- **The Android app has not been tested on a real tablet yet.** It builds and runs in the
-  Android emulator (including through a bridge), but hasn't been used on a real tablet with the
-  real mixer.
-- The desktop app (Ubuntu) and the Pi bridge have been used with a real L6max, over USB and
-  over Wi-Fi.
+- **Tested with a real L6max** on Ubuntu (USB, and Wi-Fi through the Pi bridge) and on a Samsung
+  Galaxy Tab A11 (Android 16: through the Pi, and with a USB-C cable straight into the mixer).
 - **Windows (preview, from 0.16):** `L6Desk-<version>.msi` or a portable zip. Mixing over USB and
   the Pi bridge work (tested on Windows 11); the music player works through the Pi, not yet with
   the L6max on the computer's USB. See the release notes for the driver and cable.
