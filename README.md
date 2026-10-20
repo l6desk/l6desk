@@ -24,6 +24,8 @@ L6Desk was called L6max Remote up to version 0.12.
   app, because the L6max has none). MONO ×2 on CH5/CH6 and the USB switches on CH7/CH8.
 - **Master section:** a master fader that scales every channel, **INSTANT MUTE** for feedback
   emergencies, and the four **sound pads**.
+- **Landscape or portrait:** on a tablet held upright, the strips come in two banks of four
+  (CH 1–4 / CH 5–8) with longer faders, and a lamp for each channel's mute and solo in the other bank.
 - **SENDS view:** AUX 1, AUX 2, SUB MIX and EFX sends on the faders, the effect type,
   the compressor, and four **scenes** you can store and recall.
 - **Music player:** backing tracks, walk-on and interval music played into CH7 or CH8, in
