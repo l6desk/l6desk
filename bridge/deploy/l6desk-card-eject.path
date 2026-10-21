@@ -1,0 +1,10 @@
+# Ejects the L6max's card when the bridge asks (PAD SOUNDS → EJECT CARD): the bridge runs
+# unprivileged, so it only creates the file. Installed by pi-setup.sh to /etc/systemd/system/.
+[Unit]
+Description=L6Desk: eject the L6max's card when the app asks
+
+[Path]
+PathExists=/run/l6desk-bridge/eject-card
+
+[Install]
+WantedBy=multi-user.target

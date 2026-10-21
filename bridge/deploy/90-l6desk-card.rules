@@ -1,0 +1,4 @@
+# L6Desk: when the L6max is switched to file transfer mode (USB 1686:08f4), its memory card appears
+# as a USB drive; mount it for the bridge (l6desk-card@.service), so the app's PAD SOUNDS can set the
+# sound pads' sounds through the Pi. Installed by pi-setup.sh to /etc/udev/rules.d/.
+ACTION=="add", SUBSYSTEM=="block", ENV{DEVTYPE}=="partition", ENV{ID_VENDOR_ID}=="1686", ENV{ID_MODEL_ID}=="08f4", TAG+="systemd", ENV{SYSTEMD_WANTS}+="l6desk-card@%k.service"

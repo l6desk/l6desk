@@ -1,0 +1,8 @@
+# Started by l6desk-card-eject.path: writes everything to the card and unmounts it, so the mixer can
+# leave file transfer mode safely. Installed by pi-setup.sh.
+[Unit]
+Description=L6Desk: eject the L6max's card (asked for by the app)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/sh -c 'sync; systemctl stop "l6desk-card@*.service"; rm -f /run/l6desk-bridge/eject-card'

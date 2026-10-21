@@ -1,0 +1,7 @@
+# Started by l6desk-poweroff.path when the bridge asks to power off. Installed by pi-setup.sh.
+[Unit]
+Description=L6Desk: power off (asked for by the app)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl poweroff

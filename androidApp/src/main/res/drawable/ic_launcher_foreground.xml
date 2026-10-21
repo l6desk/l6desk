@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Adaptive icon foreground: the faders from art/l6desk-icon.svg (512 units), scaled into the
+     108 dp canvas so they sit inside the 66 dp safe zone. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <group android:scaleX="0.18" android:scaleY="0.18" android:translateX="7.92" android:translateY="7.92">
+        <path android:fillColor="#050506" android:pathData="M148,104h0a8,8 0 0,1 8,8v288a8,8 0 0,1 -8,8h0a8,8 0 0,1 -8,-8v-288a8,8 0 0,1 8,-8z" />
+        <path android:fillColor="#050506" android:pathData="M256,104h0a8,8 0 0,1 8,8v288a8,8 0 0,1 -8,8h0a8,8 0 0,1 -8,-8v-288a8,8 0 0,1 8,-8z" />
+        <path android:fillColor="#050506" android:pathData="M364,104h0a8,8 0 0,1 8,8v288a8,8 0 0,1 -8,8h0a8,8 0 0,1 -8,-8v-288a8,8 0 0,1 8,-8z" />
+        <path android:fillColor="#73000000" android:pathData="M112,262h72a10,10 0 0,1 10,10v44a10,10 0 0,1 -10,10h-72a10,10 0 0,1 -10,-10v-44a10,10 0 0,1 10,-10z" />
+        <path android:fillColor="#73000000" android:pathData="M220,166h72a10,10 0 0,1 10,10v44a10,10 0 0,1 -10,10h-72a10,10 0 0,1 -10,-10v-44a10,10 0 0,1 10,-10z" />
+        <path android:fillColor="#73000000" android:pathData="M328,302h72a10,10 0 0,1 10,10v44a10,10 0 0,1 -10,10h-72a10,10 0 0,1 -10,-10v-44a10,10 0 0,1 10,-10z" />
+        <path android:fillColor="#D9D6CF" android:pathData="M112,252h72a10,10 0 0,1 10,10v44a10,10 0 0,1 -10,10h-72a10,10 0 0,1 -10,-10v-44a10,10 0 0,1 10,-10z" />
+        <path android:fillColor="#D9D6CF" android:pathData="M220,156h72a10,10 0 0,1 10,10v44a10,10 0 0,1 -10,10h-72a10,10 0 0,1 -10,-10v-44a10,10 0 0,1 10,-10z" />
+        <path android:fillColor="#E2483D" android:pathData="M328,292h72a10,10 0 0,1 10,10v44a10,10 0 0,1 -10,10h-72a10,10 0 0,1 -10,-10v-44a10,10 0 0,1 10,-10z" />
+        <path android:fillColor="#1A1B1D" android:pathData="M110,281h76v6h-76z" />
+        <path android:fillColor="#1A1B1D" android:pathData="M218,185h76v6h-76z" />
+        <path android:fillColor="#FFF6F0" android:pathData="M326,321h76v6h-76z" />
+    </group>
+</vector>

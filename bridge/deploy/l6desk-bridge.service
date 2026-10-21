@@ -1,0 +1,35 @@
+# L6Desk headless Wi-Fi bridge. Installed by pi-setup.sh to /etc/systemd/system/.
+[Unit]
+Description=L6Desk Wi-Fi bridge (L6max on USB, tablet on Wi-Fi)
+After=network.target sound.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=l6desk-bridge
+Group=l6desk-bridge
+SupplementaryGroups=audio
+# Let the bridge drive the board's activity LED as a status light (restored on stop).
+ExecStartPre=+/bin/sh -c 'for d in /sys/class/leds/ACT /sys/class/leds/led0; do if [ -d "$d" ]; then echo none > "$d/trigger"; chown l6desk-bridge "$d/brightness"; fi; done; true'
+# Announce the bridge on the network (mDNS via Avahi) while it runs.
+ExecStartPre=+/bin/sh /opt/l6desk-bridge/announce.sh on
+ExecStart=/usr/bin/java -Xmx64m -XX:+UseSerialGC -XX:TieredStopAtLevel=1 -Djava.util.prefs.userRoot=/tmp -jar /opt/l6desk-bridge/l6desk-bridge.jar --config /etc/l6desk-bridge.conf
+ExecStopPost=+/bin/sh /opt/l6desk-bridge/announce.sh off
+ExecStopPost=+/bin/sh -c 'for d in /sys/class/leds/ACT /sys/class/leds/led0; do [ -d "$d" ] && echo mmc0 > "$d/trigger"; done; true'
+Restart=always
+RestartSec=2
+# Java exits with 143 when systemd stops it (SIGTERM): a normal stop, not a failure.
+SuccessExitStatus=143
+NoNewPrivileges=yes
+ProtectSystem=strict
+# The music player keeps its playlists (folders of songs), uploads and settings here. Group-writable,
+# so songs can also be copied in over SSH (scripts/music-pi.sh).
+ReadWritePaths=-/srv/l6max-music
+UMask=0002
+# /run/l6desk-bridge: where the bridge asks for a power-off (l6desk-poweroff.path acts on it).
+RuntimeDirectory=l6desk-bridge
+ProtectHome=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

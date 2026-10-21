@@ -1,13 +1,13 @@
 # L6Desk
 
 A remote control for the **Zoom LiveTrak L6max** mixer. Mix from a tablet on a stand, or from a
-computer, with the mixer tucked away at the side of the stage.
+computer, with the mixer tucked away at the side of the stage. Free and open source (GPL-3.0).
 
-![The L6Desk desk: eight channel strips with EQ, pan, mute, solo and faders, and the master section with INSTANT MUTE and the sound pads](l6desk-desk.png)
+![The L6Desk desk: eight channel strips with EQ, pan, mute, solo and faders, and the master section with INSTANT MUTE and the sound pads](docs/images/desk.png)
 
 **[Download the latest release](https://github.com/l6desk/l6desk/releases/latest)**. Each release
-has a README, installation instructions (INSTALL.md) and a user guide (USER-GUIDE.md) alongside the
-files:
+has a README, installation instructions (INSTALL.md) and a [user guide](docs/dist/USER-GUIDE.md)
+alongside the files:
 
 | File | What it is |
 |---|---|
@@ -38,33 +38,82 @@ L6Desk was called L6max Remote up to version 0.12.
   through a small Raspberry Pi plugged into the mixer. The Pi can run its own Wi-Fi network, so no
   venue Wi-Fi is needed.
 
+| | |
+|---|---|
+| ![The SENDS view](docs/images/sends.png) | ![The music player](docs/images/player.png) |
+| ![SETUP](docs/images/setup.png) | ![RECORDINGS from the mixer's card](docs/images/recordings.png) |
+
 ## Status
 
 - **Tested with a real L6max** on Ubuntu (USB, and Wi-Fi through the Pi bridge) and on a Samsung
   Galaxy Tab A11 (Android 16: through the Pi, and with a USB-C cable straight into the mixer).
-- **Windows (preview, from 0.16):** `L6Desk-<version>.msi` or a portable zip. Mixing over USB and
-  the Pi bridge work (tested on Windows 11); the music player works through the Pi, not yet with
-  the L6max on the computer's USB. See the release notes for the driver and cable.
-- Bluetooth MIDI isn't available yet.
+- **Windows (preview, from 0.16):** mixing over USB and the Pi bridge work (tested on Windows 11);
+  the music player works through the Pi, not yet with the L6max on the computer's USB. See the
+  release notes for the driver and cable.
+- **Bluetooth MIDI** (a BLE-MIDI adapter on the L6max's MIDI jacks) isn't available yet: it hasn't
+  been built or tested, for want of an adapter. If you have one and would like to help, please get
+  in touch through Issues.
 
 ## Questions and problems
 
-Please use [Issues](https://github.com/l6desk/l6desk/issues). From version 0.14, the app's
-**REPORT** button makes a problem report for you: a zip file with a screenshot and the details we
-need, and a link that opens a new issue already filled in. Drag the zip onto the issue.
+Please use [Issues](https://github.com/l6desk/l6desk/issues). The app's **REPORT** button makes a
+problem report for you: a zip file with a screenshot and the details needed, and a link that opens
+a new issue already filled in. Drag the zip onto the issue.
 
 Reports are only opened after a check: they must hold exactly the files the app makes, and be
 signed by the copy of the app that made them. Please attach only zips made by the app.
 
-## Open source, licence and donations
+## Building it
 
-L6Desk is intended to become an **open source** project, once the app has been tested with
-cable (USB), Wi-Fi and Bluetooth connections from both Linux and Android. The licence is likely to
-be the **GNU General Public License v3 (GPL-3.0)**, so that it stays fully open. Until then, this
-repository holds the releases only.
+Everything is developed and tested on **Ubuntu 24.04**; Android Studio isn't needed. You need
+JDK 17 and the Android SDK command-line tools. `scripts/setup-ubuntu.sh` installs them (and the
+emulator, `adb` and `scrcpy`); [docs/dev-setup.md](docs/dev-setup.md) explains each step.
 
-It's free. If you find it useful, the authors would only ask that you make a donation to a
-charity of your own choice. There's no obligation.
+```sh
+scripts/setup-ubuntu.sh --check        # what's missing (changes nothing)
+scripts/setup-ubuntu.sh                # install it
+
+./gradlew check                        # all the tests (well under a minute) and Android lint
+./gradlew :desktopApp:run              # the desktop app (a simulated L6max if none is plugged in)
+./gradlew :androidApp:installDebug     # "L6Desk debug" on the emulator or a connected tablet
+scripts/bridge-sim.sh                  # a Wi-Fi bridge with the simulator behind it
+scripts/release.sh                     # .deb, APK and Pi pack in dist/<version>/
+```
+
+No L6max is needed: the app runs against a built-in simulator. A release APK you build yourself is
+signed with your own key (`scripts/make-release-key.sh`), so Android won't install it over the
+official app, or the official app over it; the debug build installs alongside either. Releases are
+described in [docs/release.md](docs/release.md), the Pi bridge in
+[docs/bridge-setup.md](docs/bridge-setup.md), and what's been found out about the L6max's MIDI in
+[docs/hardware-notes.md](docs/hardware-notes.md).
+
+| Module | Contents |
+|---|---|
+| `core/` | Everything but the UI: model, MIDI, transports, bridge protocol, sync, music player, persistence |
+| `shared/` | Compose UI shared by Android and the desktop |
+| `androidApp/` | Android entry point, USB MIDI and audio |
+| `desktopApp/` | Desktop entry point, Bridge mode, packaging (DEB, MSI) |
+| `bridge/` | Headless Wi-Fi bridge for a Raspberry Pi Zero 2 W |
+
+Built with Kotlin Multiplatform and Compose Multiplatform. [CLAUDE.md](CLAUDE.md) is the project
+brief: the decisions, the architecture and the confirmed hardware facts. Contributions are welcome:
+see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Licence and donations
+
+L6Desk is free software under the **GNU General Public License v3** ([LICENSE](LICENSE)): you may
+use, share and change it, and anything you distribute that's built from it must be shared under
+the same licence.
+
+It's free. If you find it useful, the authors would only ask that you make a donation to a charity
+of your own choice. There's no obligation.
+
+## Credits
+
+- Originally designed and developed by **Trevor Toms**.
+- Written with **Claude**, Anthropic's AI model, using Claude Code.
+- The L6max Editor-port protocol, used to read the mixer's MIDI map, was learned from
+  [zoom-l6-companion](https://github.com/philmillman/zoom-l6-companion) (MIT licence).
 
 ## Trademarks
 

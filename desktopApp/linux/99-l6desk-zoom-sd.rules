@@ -1,0 +1,4 @@
+# L6Desk: the ZOOM L6max's memory card in file transfer mode (USB 1686:08f4) is FAT32, but the L6max
+# writes a boot sector without the usual jump code, so blkid doesn't recognise it and the desktop
+# won't mount it. Say it's FAT32 (only when nothing else was found), so it mounts like any card.
+SUBSYSTEM=="block", ENV{DEVTYPE}=="partition", ENV{ID_VENDOR_ID}=="1686", ENV{ID_MODEL_ID}=="08f4", ENV{ID_FS_TYPE}=="", ENV{ID_FS_TYPE}="vfat", ENV{ID_FS_USAGE}="filesystem", ENV{ID_FS_LABEL}="ZOOM_SD", ENV{ID_FS_LABEL_ENC}="ZOOM_SD"

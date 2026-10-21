@@ -1,0 +1,12 @@
+# Powers the Pi off when the bridge asks (the app's "closing the app shuts down the Pi bridge"
+# option). The bridge runs unprivileged, so it only creates the file; this unit, run by systemd as
+# root, starts l6desk-poweroff.service when it appears. /run is emptied at every boot.
+# Installed by pi-setup.sh to /etc/systemd/system/.
+[Unit]
+Description=L6Desk: power off when the app asks
+
+[Path]
+PathExists=/run/l6desk-bridge/power-off
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,31 @@
+# Gradle / Kotlin
+.gradle/
+.kotlin/
+**/build/
+!src/**/build/
+local.properties
+
+# IDEs
+.idea/
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Web proof of concept
+node_modules/
+
+# OS / misc
+.DS_Store
+*.log
+
+# Release signing (secrets; the keystore itself lives outside the repo)
+keystore.properties
+*.jks
+*.keystore
+
+# Release output (scripts/release.sh)
+/dist/
+
+# Account recovery codes and other private files: never committed
+/confidential/

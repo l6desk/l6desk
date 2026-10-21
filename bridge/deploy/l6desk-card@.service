@@ -1,0 +1,15 @@
+# Mounts the L6max's memory card (%I, e.g. sda1) at /run/l6desk-card for the bridge, while the mixer
+# is in file transfer mode; unmounted when ejected (l6desk-card-eject.service) or when the device goes.
+# The card is FAT32 without the usual boot jump code, so its type is given rather than detected.
+# Started by 90-l6desk-card.rules. Installed by pi-setup.sh.
+[Unit]
+Description=L6Desk: the L6max's memory card (%I)
+BindsTo=dev-%i.device
+After=dev-%i.device
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStartPre=/usr/bin/mkdir -p /run/l6desk-card
+ExecStart=/usr/bin/mount -t vfat -o uid=l6desk-bridge,gid=l6desk-bridge,umask=0022,flush,noexec,nosuid,nodev /dev/%i /run/l6desk-card
+ExecStop=-/usr/bin/umount /run/l6desk-card

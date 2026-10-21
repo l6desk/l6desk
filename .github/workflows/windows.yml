@@ -1,0 +1,52 @@
+# Builds the Windows installer (.msi) and a portable zip on a GitHub-hosted Windows machine:
+# jpackage only builds for the system it runs on, and development happens on Ubuntu.
+# Run it from the Actions tab ("Run workflow"), or by pushing a v* tag. Download the results from
+# the run's Artifacts; scripts/publish-release.sh adds them to a release (see docs/release.md).
+name: Windows build
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      # The same tests as on Ubuntu (no Android ones), so a Windows-only problem shows up here.
+      - name: Tests
+        run: ./gradlew --console=plain :core:jvmTest :bridge:test :shared:jvmTest
+
+      - name: Installer and portable app
+        run: ./gradlew --console=plain :desktopApp:packageMsi :desktopApp:createDistributable
+
+      - name: Collect
+        shell: pwsh
+        run: |
+          $version = (Select-String -Path gradle.properties -Pattern '^l6desk.version=(.+)$').Matches[0].Groups[1].Value
+          New-Item -ItemType Directory -Force out | Out-Null
+          Copy-Item desktopApp/build/compose/binaries/main/msi/*.msi "out/L6Desk-$version.msi"
+          Compress-Archive -Path desktopApp/build/compose/binaries/main/app/L6Desk -DestinationPath "out/L6Desk-$version-windows-portable.zip"
+          Get-ChildItem out | ForEach-Object { "{0}  {1}" -f (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower(), $_.Name } | Set-Content out/SHA256SUMS-windows
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: l6desk-windows
+          path: out/
+          if-no-files-found: error
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-reports
+          path: '**/build/reports/tests/'
