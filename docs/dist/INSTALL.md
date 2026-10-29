@@ -9,7 +9,7 @@ There are three parts. Install the ones you need:
 - **The Pi bridge** (Raspberry Pi Zero 2 W): plugs into the L6max and gives the tablet a Wi-Fi
   link to it. It's also where the music player keeps and plays its songs.
 
-## Desktop app (Ubuntu 24.04, 64-bit PC)
+## Desktop app (Ubuntu 24.04 or 26.04, 64-bit PC)
 
 ```sh
 sudo apt install ./l6desk_{{VERSION}}-1_amd64.deb

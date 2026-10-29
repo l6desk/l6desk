@@ -9,7 +9,7 @@ This is a personal side project. Keep it simple, robust and dependency-light.
 ## Platforms and roles
 | Platform | Role |
 |---|---|
-| **Ubuntu 24.04** desktop | **Primary development and test platform.** Everything must build, run and be testable here first. |
+| **Ubuntu 24.04 or 26.04** desktop | **Primary development and test platform.** Everything must build, run and be testable here first. |
 | **Android tablet** (minSdk 24 / Android 7.0) | **Sign-off and live use.** Target device: **Samsung Galaxy Tab A11** (8.7", landscape; ✅ arrived 2026-10-17, SM-X130, Android 16). Don't depend on Google Play services. |
 | **Windows 10/11** desktop | Secondary target. Should build and package, but it is not the dev loop. |
 
@@ -30,7 +30,7 @@ This is a personal side project. Keep it simple, robust and dependency-light.
 A browser-based (Web MIDI) proof of concept came first. It is **superseded** by this Kotlin build: browsers handle BLE-MIDI poorly, a browser can't host the Wi-Fi bridge, and a native app gives more control over USB and Bluetooth permissions on Android. Its UI layout, control behaviour, CC mappings and hardware findings were carried into this design and `docs/hardware-notes.md`; its hardware captures are in `docs/hardware-captures/`. It isn't part of the public repository.
 
 ## Development and QA on Ubuntu
-All day-to-day development, testing and QA runs on Ubuntu 24.04. Set this up in milestone 1 and document it in `docs/dev-setup.md`, with a script (`scripts/setup-ubuntu.sh`) that installs what it can.
+All day-to-day development, testing and QA runs on Ubuntu (24.04 or 26.04; the build, tests, emulator and packaging are checked on both, and a `.deb` built on 26.04 still runs on 24.04). Set this up in milestone 1 and document it in `docs/dev-setup.md`, with a script (`scripts/setup-ubuntu.sh`) that installs what it can.
 
 **Toolchain**
 - JDK 17 or 21 (match what the Kotlin/Compose/AGP versions require) via apt or SDKMAN.

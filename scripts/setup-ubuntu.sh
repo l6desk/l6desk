@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Sets up Ubuntu 24.04 for L6Desk development. Safe to re-run: every
+# Sets up Ubuntu 24.04 or 26.04 for L6Desk development. Safe to re-run: every
 # step checks first and skips what is already in place.
 #
 #   scripts/setup-ubuntu.sh            install / configure everything

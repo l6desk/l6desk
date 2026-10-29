@@ -1,4 +1,4 @@
-# Development setup (Ubuntu 24.04)
+# Development setup (Ubuntu 24.04 or 26.04)
 
 All development, testing and QA happens on Ubuntu. The Galaxy Tab A11 is used for sign-off and
 live use. Android Studio is **not** required. If it's installed (e.g. the snap), it shares the

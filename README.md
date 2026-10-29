@@ -65,7 +65,7 @@ signed by the copy of the app that made them. Please attach only zips made by th
 
 ## Building it
 
-Everything is developed and tested on **Ubuntu 24.04**; Android Studio isn't needed. You need
+Everything is developed and tested on **Ubuntu 24.04 and 26.04**; Android Studio isn't needed. You need
 JDK 17 and the Android SDK command-line tools. `scripts/setup-ubuntu.sh` installs them (and the
 emulator, `adb` and `scrcpy`); [docs/dev-setup.md](docs/dev-setup.md) explains each step.
 
