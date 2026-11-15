@@ -287,3 +287,4 @@ Until the L6max is available, everything runs against `SimulatorTransport`. The 
 - Unit tests in `core/src/commonTest` (kotlin.test + kotlinx-coroutines-test); Compose UI tests and screenshots in `shared/src/jvmTest`; bridge tests in `bridge/src/test`.
 - Keep third-party dependencies minimal; ask before adding one outside the Kotlin/JetBrains/AndroidX ecosystems. (mDNS ended up needing none: see the bridge protocol section.)
 - Record hardware findings and any MIDI surprises in `docs/hardware-notes.md`.
+- Pushing files under `.github/workflows` (e.g. `windows.yml`) needs a token with the `workflow` scope; without it GitHub refuses the push. Check the `l6desk-releases` token's scopes with `gh auth status` before making a repo public or pushing CI changes. If `workflow` is missing, ask the user to add it to that account's token; don't switch the active `gh` account to do it.
